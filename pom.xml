@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.nesh</groupId>
+    <artifactId>EmployeeApp</artifactId>
+    <version>1</version>
+    <packaging>war</packaging>
+    <name>EmployeeApp-1</name>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jakartaee>10.0.0</jakartaee>
+    </properties>
+    
+    <dependencies>
+           <dependency>
+             <groupId>jakarta.platform</groupId>
+             <artifactId>jakarta.jakartaee-api</artifactId>
+             <version>9.1.0</version>
+             <scope>provided</scope>
+           </dependency>
+    
+           <!-- PrimeFaces -->
+           <dependency>
+             <groupId>org.primefaces</groupId>
+             <artifactId>primefaces</artifactId>
+             <version>12.0.0</version>
+           </dependency>
+           <dependency>
+             <groupId>org.apache.commons</groupId>
+             <artifactId>commons-fileupload2-jakarta</artifactId>
+             <version>2.0.0-M1</version>
+           </dependency>
+    
+           <!-- MySQL Connector -->
+           <dependency>
+             <groupId>mysql</groupId>
+             <artifactId>mysql-connector-java</artifactId>
+             <version>8.0.28</version>
+           </dependency>   
+        </dependencies>
+       <pluginRepositories>
+        <pluginRepository>
+            <id>payara-public</id>
+            <name>Payara Public Repository</name>
+            <url>https://repo.payara.fish/repository/payara-public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+    
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                     <groupId>fish.payara.maven.plugins</groupId>
+                <artifactId>payara-server-maven-plugin</artifactId>
+                <version>2.0.1</version> <!-- Verified working version -->
+                <configuration>
+                    <payaraHome>C:/payara6</payaraHome>
+                    <domainName>domain1</domainName>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
